@@ -5,13 +5,12 @@ function HomePage() {
 
   const createMeeting = async () => {
     try {
-      const res = await fetch("/create-room"); // ✅ relative path works for dev & prod
-  
+      const res = await fetch("https://video-call-igjd.onrender.com/create-room");
+      
       if (!res.ok) throw new Error("Failed to create meeting");
   
       const data = await res.json();
   
-      // Build a link based on current frontend URL
       const link = `${window.location.origin}/room/${data.roomId}`;
       setMeetingLink(link);
     } catch (err) {
@@ -19,6 +18,7 @@ function HomePage() {
       alert("Could not create meeting. Check backend connection.");
     }
   };
+  
   
   
 
